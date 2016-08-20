@@ -108,7 +108,9 @@ function init() {
 
     //HTML (VIEW + CONTROLLER)
 
+
     function clickButtons() {
+        console.log("click");
         if (game.gameOn === false) {
             return;
         }
@@ -116,7 +118,16 @@ function init() {
         var buttonId = this.getAttribute("value");
         console.log("User clicked = " + buttonId);
 
+        this.style.backgroundColor = buttonColors[buttonId - 1];
+
+
+
         game.processUserChoice(buttonId);
+    }
+
+    function mouseUp() {
+        console.log("mouseUp");
+        this.style.backgroundColor = "";
     }
 
 
@@ -142,6 +153,7 @@ function init() {
     function playTunes() {
         // event.preventDefault();
         console.log("Play Tunes");
+
 
         var x = document.getElementsByTagName("li");
 
@@ -170,7 +182,8 @@ function init() {
     //add eventlisteners
 
     // $("#newRound").on("click", game.startNewRound);
-    $("li").on("click", clickButtons);
+    $("li").mousedown(clickButtons);
+    $("li").mouseup(mouseUp);
 
     $("#startButton").on("click", game.startNewGame);
     game.startNewGame();
