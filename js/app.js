@@ -12,6 +12,10 @@ function init() {
 
     }
 
+    buttonColors = [
+        "red", "green", "blue", "yellow"
+    ]
+
 
     //adding functions to game object
 
@@ -43,12 +47,23 @@ function init() {
 
         //this is the user index sequence
         this.sequenceIndex = 0;
-        playTunes();
+
+        var randNum = Math.floor((Math.random() * 4) + 1);
+        this.computerSequence.push(randNum);
+
+        setTimeout(playTunes, 1500);
 
         // game.computerSequence = [];
         // game.sequenceIndex= 0;
         this.round++;
     }
+
+
+
+
+
+
+
 
 
     game.endGame = function() {
@@ -75,7 +90,9 @@ function init() {
                 console.log("You win!");
                 this.currentScore++;
                 this.bestScore = this.currentScore;
-                this.startNewRound();
+                this.startNewRound()
+
+                // this.startNewRound();
             } else {
                 this.sequenceIndex++;
             }
@@ -103,23 +120,36 @@ function init() {
     }
 
 
+
+    function FadeButton(buttonId) {
+        var button = $("#square" + buttonId)
+        var x = document.getElementsByTagName("li");
+        x[buttonId - 1].style.backgroundColor = buttonColors[buttonId - 1];
+        setTimeout(FadeButtonDone.bind(0, buttonId), 500)
+        //button.fadeOut(200).fadeIn(200)
+        //button.backgroundColor = "";
+    }
+
+    function FadeButtonDone(buttonId) {
+        var button = $("#square" + buttonId)
+            //button.backgroundColor = "red";
+            //.fadeOut(200).fadeIn(200)
+        var x = document.getElementsByTagName("li");
+        x[buttonId - 1].style.backgroundColor = "";
+    }
+
+
     function playTunes() {
         // event.preventDefault();
         console.log("Play Tunes");
 
-        var randNum = (Math.floor((Math.random() * 4) + 1));
-        game.computerSequence.push(randNum);
-
         var x = document.getElementsByTagName("li");
 
-        if (randNum == 1) {
-            x[0].style.backgroundColor = "red";
-        } else if (randNum == 2) {
-            x[1].style.backgroundColor = "red";
-        } else if (randNum == 3) {
-            x[2].style.backgroundColor = "red";
-        } else {
-            x[3].style.backgroundColor = "red";
+        for (var i = 0; i < game.computerSequence.length; i++) {
+            var buttonId = game.computerSequence[i];
+
+            setTimeout(FadeButton.bind(0, buttonId), 750 * i)
+
         }
 
 
