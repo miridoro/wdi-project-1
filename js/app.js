@@ -25,6 +25,10 @@ function init() {
         game.gameOn = true;
         game.round = 0;
 
+        document.getElementById("message").innerHTML = "";
+        document.getElementById("bestScore").innerHTML = "";
+
+
 
 
         // launch game
@@ -49,10 +53,17 @@ function init() {
 
     game.endGame = function() {
         console.log("endGame");
+        document.getElementById("message").innerHTML = "Game Over: Press START to try again.";
+        document.getElementById("bestScore").innerHTML = "Best Score: " + game.bestScore;
+        game.gameOn = false;
+
     }
 
-
     game.processUserChoice = function(buttonId) {
+
+        if (game.gameOn === false) {
+            return;
+        }
 
         console.log("Button ID: " + buttonId + " computer id: " + this.computerSequence[this.sequenceIndex]);
 
@@ -63,6 +74,7 @@ function init() {
             if (this.sequenceIndex === this.computerSequence.length - 1) {
                 console.log("You win!");
                 this.currentScore++;
+                this.bestScore = this.currentScore;
                 this.startNewRound();
             } else {
                 this.sequenceIndex++;
@@ -76,9 +88,14 @@ function init() {
 
     }
 
+
     //HTML (VIEW + CONTROLLER)
 
     function clickButtons() {
+        if (game.gameOn === false) {
+            return;
+        }
+
         var buttonId = this.getAttribute("value");
         console.log("User clicked = " + buttonId);
 
@@ -92,7 +109,23 @@ function init() {
 
         var randNum = (Math.floor((Math.random() * 4) + 1));
         game.computerSequence.push(randNum);
+
+        var x = document.getElementsByTagName("li");
+
+        if (randNum == 1) {
+            x[0].style.backgroundColor = "red";
+        } else if (randNum == 2) {
+            x[1].style.backgroundColor = "red";
+        } else if (randNum == 3) {
+            x[2].style.backgroundColor = "red";
+        } else {
+            x[3].style.backgroundColor = "red";
+        }
+
+
+
         console.log("Computer plays: " + game.computerSequence);
+
 
 
         //play buttons (sounds and highlight colors)
@@ -106,10 +139,15 @@ function init() {
 
     //add eventlisteners
 
-    $("#newRound").on("click", game.startNewRound);
+    // $("#newRound").on("click", game.startNewRound);
     $("li").on("click", clickButtons);
 
+    $("#startButton").on("click", game.startNewGame);
     game.startNewGame();
+
+
+
+
 
 
 
