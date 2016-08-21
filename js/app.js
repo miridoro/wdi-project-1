@@ -107,7 +107,8 @@ function init() {
 
 
     //HTML (VIEW + CONTROLLER)
-
+    var song;
+    var audio;
 
     function clickButtons() {
         console.log("click");
@@ -116,9 +117,16 @@ function init() {
         }
 
         var buttonId = this.getAttribute("value");
+        song = this.getAttribute("sound");
+        console.log("song: " + song);
         console.log("User clicked = " + buttonId);
 
         this.style.backgroundColor = buttonColors[buttonId - 1];
+
+        audio = new Audio("sounds/" + song + ".wav");
+        audio.play();
+
+
 
 
 
@@ -128,6 +136,8 @@ function init() {
     function mouseUp() {
         console.log("mouseUp");
         this.style.backgroundColor = "";
+        audio.pause();
+
     }
 
 
