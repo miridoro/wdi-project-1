@@ -12,22 +12,31 @@ function init() {
 
     }
 
+    buttonColors = [
+        "red", "green", "blue", "yellow"
+    ]
+
+    // buttonSounds = [
+    //     "moo", "quack", "oink", "woof"
+    // ]
+
+
 
     buttonInfos = [{
         color: "red",
-        sound: "moo",
+        sound: "sounds/moo.wav",
         timeout: 1000
     }, {
         color: "green",
-        sound: "quack",
+        sound: "sounds/quack.wav",
         timeout: 500
     }, {
         color: "blue",
-        sound: "oink",
+        sound: "sounds/oink.wav",
         timeout: 500
     }, {
         color: "yellow",
-        sound: "woof",
+        sound: "sounds/woof.wav",
         timeout: 500
     }]
 
@@ -83,6 +92,7 @@ function init() {
 
     game.endGame = function() {
         console.log("endGame");
+        // $("#message").html("Game Over: Press START to try again.");
         document.getElementById("message").innerHTML = "Game Over: Press START to try again.";
         document.getElementById("bestScore").innerHTML = "Best Score: " + game.bestScore;
         game.gameOn = false;
@@ -121,8 +131,7 @@ function init() {
 
 
     //HTML (VIEW + CONTROLLER)
-    var song;
-    var audio;
+
 
     function clickButtons() {
         console.log("click");
@@ -131,15 +140,16 @@ function init() {
         }
 
         var buttonId = this.getAttribute("value");
-        song = this.getAttribute("sound");
-        console.log("song: " + song);
+        // var song = this.getAttribute("sound");
         console.log("User clicked = " + buttonId);
 
         var buttonInfo = buttonInfos[buttonId - 1]
 
         this.style.backgroundColor = buttonInfo.color;
 
-        audio = new Audio("sounds/" + buttonInfo.sound + ".wav");
+        // $(this).css('background-color', 'buttonInfo.color');
+
+        var audio = new Audio(buttonInfo.sound);
         audio.play();
 
 
@@ -150,17 +160,17 @@ function init() {
     function mouseUp() {
         console.log("mouseUp");
         this.style.backgroundColor = "";
-        audio.pause();
+        // audio.pause();
 
     }
 
 
 
     function FadeButton(buttonId) {
-        var button = $("#square" + buttonId)
+        // var button = $("#square" + buttonId)
         var x = document.getElementsByTagName("li");
         x[buttonId - 1].style.backgroundColor = buttonColors[buttonId - 1];
-        setTimeout(FadeButtonDone.bind(0, buttonId), 500)
+        //setTimeout(FadeButtonDone.bind(0, buttonId), 500)
         //button.fadeOut(200).fadeIn(200)
         //button.backgroundColor = "";
     }
@@ -179,14 +189,21 @@ function init() {
         console.log("Play Tunes");
 
 
-        var x = document.getElementsByTagName("li");
+        // var x = document.getElementsByTagName("li");
 
         for (var i = 0; i < game.computerSequence.length; i++) {
             var buttonId = game.computerSequence[i];
 
-            setTimeout(FadeButton.bind(0, buttonId), 750 * i)
+            setTimeout(FadeButton.bind(0, buttonId), 1000 * i);
+            setTimeout(FadeButtonDone.bind(0, buttonId), 1000 * i + 500);
+
+            var pcbuttonInfo = buttonInfos[buttonId - 1]
+            var audio = new Audio(pcbuttonInfo.sound);
+            audio.play();
 
         }
+
+
 
 
 
