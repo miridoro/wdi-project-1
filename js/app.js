@@ -12,9 +12,24 @@ function init() {
 
     }
 
-    buttonColors = [
-        "red", "green", "blue", "yellow"
-    ]
+
+    buttonInfos = [{
+        color: "red",
+        sound: "moo",
+        timeout: 1000
+    }, {
+        color: "green",
+        sound: "quack",
+        timeout: 500
+    }, {
+        color: "blue",
+        sound: "oink",
+        timeout: 500
+    }, {
+        color: "yellow",
+        sound: "woof",
+        timeout: 500
+    }]
 
 
     //adding functions to game object
@@ -92,7 +107,6 @@ function init() {
                 this.bestScore = this.currentScore;
                 this.startNewRound()
 
-                // this.startNewRound();
             } else {
                 this.sequenceIndex++;
             }
@@ -121,12 +135,12 @@ function init() {
         console.log("song: " + song);
         console.log("User clicked = " + buttonId);
 
-        this.style.backgroundColor = buttonColors[buttonId - 1];
+        var buttonInfo = buttonInfos[buttonId - 1]
 
-        audio = new Audio("sounds/" + song + ".wav");
+        this.style.backgroundColor = buttonInfo.color;
+
+        audio = new Audio("sounds/" + buttonInfo.sound + ".wav");
         audio.play();
-
-
 
 
 
@@ -178,12 +192,7 @@ function init() {
 
         console.log("Computer plays: " + game.computerSequence);
 
-
-
-        //play buttons (sounds and highlight colors)
     }
-
-
 
 
 
@@ -197,12 +206,6 @@ function init() {
 
     $("#startButton").on("click", game.startNewGame);
     game.startNewGame();
-
-
-
-
-
-
 
 
 
