@@ -53,8 +53,9 @@ function init() {
         game.gameOn = true;
         game.round = 0;
 
-        document.getElementById("message").innerHTML = "";
-        document.getElementById("bestScore").innerHTML = "";
+
+        $("#message").html("");
+        $("#bestScore").html("");
 
 
 
@@ -92,9 +93,9 @@ function init() {
 
     game.endGame = function() {
         console.log("endGame");
-        // $("#message").html("Game Over: Press START to try again.");
-        document.getElementById("message").innerHTML = "Game Over: Press START to try again.";
-        document.getElementById("bestScore").innerHTML = "Best Score: " + game.bestScore;
+        $("#message").html("Game Over: Press START to try again.");
+        $("#bestScore").html("Best Score: " + game.bestScore);
+
         game.gameOn = false;
 
     }
@@ -168,7 +169,7 @@ function init() {
 
     function FadeButton(buttonId) {
         // var button = $("#square" + buttonId)
-        var x = document.getElementsByTagName("li");
+        var x = $("li");
         x[buttonId - 1].style.backgroundColor = buttonColors[buttonId - 1];
         //setTimeout(FadeButtonDone.bind(0, buttonId), 500)
         //button.fadeOut(200).fadeIn(200)
@@ -179,7 +180,7 @@ function init() {
         var button = $("#square" + buttonId)
             //button.backgroundColor = "red";
             //.fadeOut(200).fadeIn(200)
-        var x = document.getElementsByTagName("li");
+        var x = $("li");
         x[buttonId - 1].style.backgroundColor = "";
     }
 
@@ -189,7 +190,6 @@ function init() {
         console.log("Play Tunes");
 
 
-        // var x = document.getElementsByTagName("li");
 
         for (var i = 0; i < game.computerSequence.length; i++) {
             var buttonId = game.computerSequence[i];
@@ -202,9 +202,6 @@ function init() {
             audio.play();
 
         }
-
-
-
 
 
         console.log("Computer plays: " + game.computerSequence);
