@@ -174,6 +174,9 @@ function init() {
         //setTimeout(FadeButtonDone.bind(0, buttonId), 500)
         //button.fadeOut(200).fadeIn(200)
         //button.backgroundColor = "";
+        var pcbuttonInfo = buttonInfos[buttonId - 1]
+        var audio = new Audio(pcbuttonInfo.sound);
+        audio.play();
     }
 
     function FadeButtonDone(buttonId) {
@@ -191,18 +194,28 @@ function init() {
 
 
 
-        for (var i = 0; i < game.computerSequence.length; i++) {
-            var buttonId = game.computerSequence[i];
+        // for (var i = 0; i < game.computerSequence.length; i++) {
+        //     var buttonId = game.computerSequence[i];
 
-            setTimeout(FadeButton.bind(0, buttonId), 1000 * i);
-            setTimeout(FadeButtonDone.bind(0, buttonId), 1000 * i + 500);
+        //     setTimeout(FadeButton.bind(0, buttonId), 1000 * i);
+        //     setTimeout(FadeButtonDone.bind(0, buttonId), 1000 * i + 500);
 
-            var pcbuttonInfo = buttonInfos[buttonId - 1]
-            var audio = new Audio(pcbuttonInfo.sound);
-            audio.play();
+        //     var pcbuttonInfo = buttonInfos[buttonId - 1]
+        //     var audio = new Audio(pcbuttonInfo.sound);
+        //     audio.play();
 
-        }
+        // }
 
+
+        $.each(game.computerSequence, function(i, buttonId) {
+            for (var i = 0; i < game.computerSequence.length; i++) {
+                var buttonId = game.computerSequence[i];
+
+                setTimeout(FadeButton.bind(0, buttonId), 750 * i);
+                setTimeout(FadeButtonDone.bind(0, buttonId), 750 * i + 500);
+
+            }
+        })
 
         console.log("Computer plays: " + game.computerSequence);
 
