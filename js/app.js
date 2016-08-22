@@ -122,13 +122,11 @@ function init() {
             return;
         }
 
-        var buttonId = this.getAttribute("value");
-        // var song = this.getAttribute("sound");
+        var buttonId = $(this).attr("value");
+
         console.log("User clicked = " + buttonId);
 
-        var buttonInfo = buttonInfos[buttonId - 1]
-
-        // this.style.backgroundColor = buttonInfo.color;
+        var buttonInfo = buttonInfos[buttonId - 1];
 
         $(this).css('background-color', buttonInfo.color);
 
@@ -136,15 +134,13 @@ function init() {
         audio.play();
 
 
-
         game.processUserChoice(buttonId);
+
     }
 
     function mouseUp() {
         console.log("mouseUp");
-        this.style.backgroundColor = "";
-        // audio.pause();
-
+        $(this).css('background-color', '');
     }
 
 
@@ -171,7 +167,6 @@ function init() {
 
 
     function playTunes() {
-        // event.preventDefault();
         console.log("Play Tunes");
 
 
@@ -181,10 +176,6 @@ function init() {
 
         //     setTimeout(FadeButton.bind(0, buttonId), 1000 * i);
         //     setTimeout(FadeButtonDone.bind(0, buttonId), 1000 * i + 500);
-
-        //     var pcbuttonInfo = buttonInfos[buttonId - 1]
-        //     var audio = new Audio(pcbuttonInfo.sound);
-        //     audio.play();
 
         // }
 
@@ -209,13 +200,11 @@ function init() {
 
     //add eventlisteners
 
-    // $("#newRound").on("click", game.startNewRound);
     $("li").mousedown(clickButtons);
     $("li").mouseup(mouseUp);
-
     $("#startButton").on("click", game.startNewGame);
-    game.startNewGame();
 
+    game.startNewGame();
 
 
 }
