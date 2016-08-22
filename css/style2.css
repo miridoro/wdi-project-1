@@ -4,8 +4,8 @@ body {
 }
 
 img {
-  height: 100%;
-  width: 100%;
+  height: 60%;
+  width: 60%;
 }
 
 h1 {
@@ -38,7 +38,7 @@ li {
 }
 
 
-#gameButtons {padding: 2px;}
+ul {padding: 2px;}
 
 #div {
   padding: 2px;

@@ -114,10 +114,8 @@ function init() {
             return;
         }
 
-        var buttonId = $(this).attr("value");
-        var imageId = $(this).find("img")[0];
+        var buttonId = $(this).attr('id');
 
-        console.log(imageId);
         console.log("User clicked = " + buttonId);
 
         var buttonInfo = buttonInfos[buttonId - 1];
@@ -177,17 +175,6 @@ function init() {
             setTimeout(FadeButtonDone.bind(0, buttonId), 1000 * i + 500);
 
         }
-
-
-        // $.each(game.computerSequence, function(i, buttonId) {
-        //     for (var i = 0; i < game.computerSequence.length; i++) {
-        //         var buttonId = game.computerSequence[i];
-
-        //         setTimeout(FadeButton.bind(0, buttonId), 750 * i);
-        //         setTimeout(FadeButtonDone.bind(0, buttonId), 750 * i + 500);
-
-        //     }
-        // })
 
 
         console.log("Computer plays: " + game.computerSequence);
