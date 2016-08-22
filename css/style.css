@@ -3,16 +3,29 @@ body {
 
 }
 
-img {
+.animalImage{
   height: 100%;
   width: 100%;
+}
+
+
+.animalImage:hover, .animalImage_hover {
+    /*display: block;*/
+    /*margin: -50px;*/
+    width: 120%;
+    height: 120%;
+    transition: 0.7s;
+    padding-left: -20px;
+    opacity: 1;
+    z-index: 2000;
+    /*transform: rotateY(180deg);*/
 }
 
 h1 {
   margin-top: 100px;
   text-align: center;
   font-size: 2em;
-  color: cornflowerblue;
+  color: purple;
   font-family: arial;
 }
 
@@ -23,7 +36,7 @@ h1 {
   height: 275px;
 }
 
-li {
+.animalButton {
   width: 100px;
   height: 100px;
   /*border: 1px solid #666666;*/

@@ -115,9 +115,12 @@ function init() {
         }
 
         var buttonId = $(this).attr("value");
-        var imageId = $(this).find("img")[0];
 
-        console.log(imageId);
+        //find() accesses child element of <li>
+        var imageElem = $(this).find("img")[0];
+
+
+        console.log(imageElem);
         console.log("User clicked = " + buttonId);
 
         var buttonInfo = buttonInfos[buttonId - 1];
@@ -141,14 +144,24 @@ function init() {
 
     function FadeButton(buttonId) {
 
+        console.log("This is this: " + this);
+
         if (game.gameOn === false) {
             return;
         }
 
-        var lis = $("li");
 
+
+
+
+
+        var lis = $(".animalButton");
         var buttonInfo = buttonInfos[buttonId - 1];
-        $(lis[buttonId - 1]).css('background-color', buttonInfo.color);
+        // $(lis[buttonId - 1]).css('background-color', buttonInfo.color);
+
+        var imageElem = $(lis[buttonId - 1]).find("img")[0];
+
+        $(imageElem).addClass("animalImage_hover");
 
         //setTimeout(FadeButtonDone.bind(0, buttonId), 500)
         //button.fadeOut(200).fadeIn(200)
@@ -161,8 +174,11 @@ function init() {
     function FadeButtonDone(buttonId) {
         //.fadeOut(200).fadeIn(200)
 
-        var lis = $("li");
-        $(lis[buttonId - 1]).css('background-color', '');
+        var lis = $(".animalButton");
+        var imageElem = $(lis[buttonId - 1]).find("img")[0];
+        $(imageElem).removeClass("animalImage_hover");
+
+        // $(lis[buttonId - 1]).css('background-color', '');
     }
 
 
@@ -200,8 +216,8 @@ function init() {
 
     //add eventlisteners
 
-    $("li").mousedown(clickButtons);
-    $("li").mouseup(mouseUp);
+    $(".animalButton").mousedown(clickButtons);
+    $(".animalButton").mouseup(mouseUp);
     $("#startButton").on("click", game.startNewGame);
 
     game.startNewGame();
