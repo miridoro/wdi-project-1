@@ -3,8 +3,6 @@ $(init)
 function init() {
 
 
-    console.log("hello");
-
     //setting up game object
 
     var game = {
@@ -15,11 +13,6 @@ function init() {
     buttonColors = [
         "red", "green", "blue", "yellow"
     ]
-
-    // buttonSounds = [
-    //     "moo", "quack", "oink", "woof"
-    // ]
-
 
 
     buttonInfos = [{
@@ -45,13 +38,11 @@ function init() {
 
     game.startNewGame = function() {
         //resets all variables
-        // event.preventDefault();
         console.log("startNewGame");
 
         game.computerSequence = [];
         game.currentScore = 0;
         game.gameOn = true;
-        game.round = 0;
 
 
         $("#message").html("");
@@ -78,16 +69,7 @@ function init() {
 
         setTimeout(playTunes, 1500);
 
-        // game.computerSequence = [];
-        // game.sequenceIndex= 0;
-        this.round++;
     }
-
-
-
-
-
-
 
 
 
@@ -146,9 +128,9 @@ function init() {
 
         var buttonInfo = buttonInfos[buttonId - 1]
 
-        this.style.backgroundColor = buttonInfo.color;
+        // this.style.backgroundColor = buttonInfo.color;
 
-        // $(this).css('background-color', 'buttonInfo.color');
+        $(this).css('background-color', buttonInfo.color);
 
         var audio = new Audio(buttonInfo.sound);
         audio.play();
