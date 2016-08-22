@@ -42,7 +42,7 @@ ul { padding: 2px;}
   text-align: center;
 }
 
-#bestScore {
+#bestScore, #currentScore {
   text-align: center;
 }
 
