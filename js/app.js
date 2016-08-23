@@ -16,15 +16,15 @@ function init() {
         timeout: 1000
     }, {
         color: "green",
-        sound: "sounds/quack.wav",
-        timeout: 500
-    }, {
-        color: "blue",
         sound: "sounds/oink.wav",
         timeout: 500
     }, {
+        color: "blue",
+        sound: "sounds/sheep.wav",
+        timeout: 500
+    }, {
         color: "yellow",
-        sound: "sounds/woof.wav",
+        sound: "sounds/elephant.wav",
         timeout: 500
     }]
 
@@ -68,7 +68,7 @@ function init() {
 
     game.endGame = function() {
         console.log("endGame");
-        $("#message").html("Game Over: Press START to try again.");
+        $("#message").html("GAME OVER! Press START to try again.");
         $("#bestScore").html("Best Score: " + game.bestScore);
         $("#currentScore").html("");
 
