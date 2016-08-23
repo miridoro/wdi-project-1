@@ -151,10 +151,6 @@ function init() {
         }
 
 
-
-
-
-
         var lis = $(".animalButton");
         var buttonInfo = buttonInfos[buttonId - 1];
         // $(lis[buttonId - 1]).css('background-color', buttonInfo.color);
@@ -164,15 +160,13 @@ function init() {
         $(imageElem).addClass("animalImage_hover");
 
         //setTimeout(FadeButtonDone.bind(0, buttonId), 500)
-        //button.fadeOut(200).fadeIn(200)
-
 
         var audio = new Audio(buttonInfo.sound);
         audio.play();
     }
 
+
     function FadeButtonDone(buttonId) {
-        //.fadeOut(200).fadeIn(200)
 
         var lis = $(".animalButton");
         var imageElem = $(lis[buttonId - 1]).find("img")[0];
@@ -191,25 +185,11 @@ function init() {
 
             setTimeout(FadeButton.bind(0, buttonId), 1000 * i);
             setTimeout(FadeButtonDone.bind(0, buttonId), 1000 * i + 500);
-
         }
-
-
-        // $.each(game.computerSequence, function(i, buttonId) {
-        //     for (var i = 0; i < game.computerSequence.length; i++) {
-        //         var buttonId = game.computerSequence[i];
-
-        //         setTimeout(FadeButton.bind(0, buttonId), 750 * i);
-        //         setTimeout(FadeButtonDone.bind(0, buttonId), 750 * i + 500);
-
-        //     }
-        // })
-
 
         console.log("Computer plays: " + game.computerSequence);
 
     }
-
 
 
     //START PROGRAM
