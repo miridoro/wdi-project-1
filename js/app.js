@@ -1,3 +1,15 @@
+// PSEUDOCODE
+// Start New Game as soon as webpage loads
+// Set all variables 
+// Generate a random number and add to computer sequence array
+// Call playTunes() function to play audio files linked to values in computer array
+// Now User can click animal images and audio files will play
+// If there is a match, Score count will increase and game continues to next round
+// If the user makes a mistake the game will end
+// User can click the START button to start over game
+
+
+
 $(init)
 
 function init() {
@@ -91,7 +103,7 @@ function init() {
                 this.currentScore++;
                 $('#currentScore').html("Score: " + this.currentScore);
                 this.bestScore = this.currentScore;
-                this.startNewRound()
+                this.startNewRound();
 
             } else {
                 this.sequenceIndex++;
@@ -128,8 +140,6 @@ function init() {
 
         var audio = new Audio(buttonInfo.sound);
         audio.play();
-
-
 
         game.processUserChoice(buttonId);
 
