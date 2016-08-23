@@ -24,7 +24,7 @@ function init() {
         timeout: 500
     }, {
         color: "yellow",
-        sound: "sounds/elephant.wav",
+        sound: "sounds/rubberduck.wav",
         timeout: 500
     }]
 
