@@ -124,7 +124,7 @@ function init() {
         console.log("User clicked = " + buttonId);
 
         var buttonInfo = buttonInfos[buttonId - 1];
-        $(this).css('background-color', buttonInfo.color);
+        // $(this).css('background-color', buttonInfo.color);
 
         var audio = new Audio(buttonInfo.sound);
         audio.play();
